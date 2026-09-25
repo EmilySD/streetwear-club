@@ -12,7 +12,11 @@ let posicion = 0;
 
 let anchoSlide = 0;
 
+let maxPosicion = 0;
+
 let intervalo;
+
+const puntos = document.querySelectorAll(".punto");
 
 
 
@@ -24,51 +28,116 @@ function calcularSlide() {
 
     const slide = slides[0];
 
-    const estilo = window.getComputedStyle(track);
+    const estilo =
+        window.getComputedStyle(track);
 
-    const gap = parseFloat(estilo.gap) || 0;
+    const gap =
+        parseFloat(estilo.gap) || 0;
 
-    anchoSlide = slide.offsetWidth + gap;
+    anchoSlide =
+        slide.offsetWidth + gap;
+
+
+    const carrusel =
+        document.querySelector(".carrusel");
+
+
+
+    const maxDesplazamiento =
+        track.scrollWidth - carrusel.clientWidth;
+
+
+
+    maxPosicion =
+        Math.max(
+            0,
+            Math.ceil(
+                maxDesplazamiento / anchoSlide
+            )
+        );
+
+
+
+    if (posicion > maxPosicion) {
+
+        posicion = maxPosicion;
+
+    }
+
 }
 
 
 
 function moverCarrusel() {
 
+    const carrusel = document.querySelector(".carrusel");
+
+    const maxDesplazamiento =
+        track.scrollWidth - carrusel.clientWidth;
+
+
+    let desplazamiento =
+        posicion * anchoSlide;
+
+
+    desplazamiento =
+        Math.min(desplazamiento, maxDesplazamiento);
+
+
     track.style.transform =
-        `translateX(-${posicion * anchoSlide}px)`;
+        `translateX(-${desplazamiento}px)`;
+
+
+
+
+    puntos.forEach((punto, indice) => {
+
+        punto.classList.remove("activo");
+
+        if (indice === posicion) {
+
+            punto.classList.add("activo");
+
+        }
+
+    });
 
 }
 
+puntos.forEach((punto) => {
+
+    punto.addEventListener("click", () => {
+
+        posicion = Number(punto.dataset.slide);
+
+        track.style.transition =
+            "transform 0.6s ease";
+
+        moverCarrusel();
+
+        reiniciarAutomatico();
+
+    });
+
+});
 
 
 function siguienteSlide() {
 
     posicion++;
 
-
-    if (posicion >= slides.length) {
+    if (posicion > maxPosicion) {
 
         posicion = 0;
 
-        track.style.transition = "none";
-
-        moverCarrusel();
-
-        setTimeout(() => {
-
-            track.style.transition =
-                "transform 0.6s ease";
-
-        }, 50);
-
-        return;
     }
+    
 
     track.style.transition =
         "transform 0.6s ease";
 
     moverCarrusel();
+
 }
 
 
@@ -79,26 +148,16 @@ function anteriorSlide() {
 
     if (posicion < 0) {
 
-        posicion = slides.length - 1;
+        posicion = maxPosicion;
 
-        track.style.transition = "none";
-
-        moverCarrusel();
-
-        setTimeout(() => {
-
-            track.style.transition =
-                "transform 0.6s ease";
-
-        }, 50);
-
-        return;
     }
+
 
     track.style.transition =
         "transform 0.6s ease";
 
     moverCarrusel();
+
 }
 
 

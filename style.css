@@ -270,6 +270,8 @@ header {
     display: flex;
 
     align-items: center;
+
+    padding-bottom: 50px;
 }
 
 
@@ -420,6 +422,58 @@ header {
     color: #ffffff;
 
     transform: scale(1.05);
+}
+
+.indicadores {
+    position: absolute;
+
+    bottom: 15px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    background: #555251;
+
+    padding: 7px 10px;
+
+    border-radius: 20px;
+
+    z-index: 20;
+}
+
+.punto {
+    width: 10px;
+    height: 10px;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #eeeeee;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.punto.activo {
+    width: 28px;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+}
+
+.punto:hover {
+    transform: scale(1.2);
 }
 
 .anterior {
