@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Streetwear Club | SC</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+
+        <div class="nav">
+
+            <!-- LOGO -->
+            <div class="logo">
+
+                <span class="logo-icon">
+                    <img src="Imagenes/logoSC.jpeg" alt="Logo SC">
+                </span>
+
+                <strong>SC</strong>
+
+                <span>Streetwear Club</span>
+
+            </div>
+
+            <nav class="menu">
+
+                <a href="#inicio">Inicio</a>
+
+                <a href="#novedades">Novedades</a>
+
+                <a href="#catalogo">Catálogo</a>
+
+                <a href="#nosotros.html">Nosotros</a>
+
+                <a href="#redes">Redes</a>
+
+                <a href="#contacto">Contacto</a>
+
+                <a href="sucursales.html">Sucursales</a>
+
+            </nav>
+
+            <div class="iconos">
+
+                <button title="Buscar">
+                    🔍
+                </button>
+
+                <button title="Carrito">
+                    🛒
+                </button>
+
+                <button title="Filtros">
+                    ☰
+                </button>
+
+                <button
+                    id="modoOscuro"
+                    class="dark-button"
+                    title="Cambiar modo">
+                    ◐
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <main>
+
+        <section id="inicio" class="hero">
+
+            <div class="hero-contenido">
+
+
+                <img
+                    src="Imagenes/banner.jpeg"
+                    alt="Streetwear Club"
+                    class="banner-imagen"
+                >
+
+                <a href="#catalogo" class="boton-hero">
+                    VER COLECCIÓN
+                </a>
+
+            </div>
+
+        </section>
+
+        <section class="carrusel-seccion" id="novedades">
+
+            <div class="titulo-carrusel">
+
+                <p>SC / DESTACADOS</p>
+
+                <h2>Descubre lo nuevo</h2>
+
+                <span>
+                    Explora las novedades de Streetwear Club
+                </span>
+
+            </div>
+
+            <div class="carrusel-contenedor">
+
+                <button
+                    class="carrusel-btn anterior"
+                    id="anterior"
+                    aria-label="Anterior">
+
+                    ‹
+
+                </button>
+
+                <div class="carrusel">
+
+                    <div
+                        class="carrusel-track"
+                        id="carruselTrack">
+
+                        <a
+                            href="destacados.html"
+                            class="slide">
+
+                            <img
+                                src="Imagenes/destacados.jpg"
+                                alt="Productos destacados">
+
+                            <div class="slide-info">
+
+                                <span>SC / DESTACADO</span>
+
+                                <h3>
+                                    Productos destacados
+                                </h3>
+
+                                <p>
+                                    VER AHORA →
+                                </p>
+
+                            </div>
+
+                        </a>
+
+                        <a
+                            href="ofertas.html"
+                            class="slide">
+
+                            <img
+                                src="Imagenes/ofertaT1.jpeg"
+                                alt="Ofertas">
+
+                            <div class="slide-info">
+
+                                <span>SC / OFERTA</span>
+
+                                <h3>
+                                    Ofertas de la semana
+                                </h3>
+
+                                <p>
+                                    VER OFERTAS →
+                                </p>
+
+                            </div>
+
+                        </a>
+
+                        <a
+                            href="nueva-coleccion.html"
+                            class="slide">
+
+                            <img
+                                src="Imagenes/nueva-coleccion.jpg"
+                                alt="Nueva colección">
+
+                            <div class="slide-info">
+
+                                <span>SC / NUEVO</span>
+
+                                <h3>
+                                    Nueva colección
+                                </h3>
+
+                                <p>
+                                    DESCUBRIR →
+                                </p>
+
+                            </div>
+
+                        </a>
+
+                        <a
+                            href="Hombres.html"
+                            class="slide">
+
+                            <img
+                                src="Imagenes/hombre.jpg"
+                                alt="Ropa de hombre">
+
+                            <div class="slide-info">
+
+                                <span>SC / HOMBRE</span>
+
+                                <h3>
+                                    Streetwear para hombre
+                                </h3>
+
+                                <p>
+                                    COMPRAR →
+                                </p>
+
+                            </div>
+
+                        </a>
+
+                        <a
+                            href="Mujeres.html"
+                            class="slide">
+
+                            <img
+                                src="Imagenes/mujer.jpg"
+                                alt="Ropa de mujer">
+
+                            <div class="slide-info">
+
+                                <span>SC / MUJER</span>
+
+                                <h3>
+                                    Streetwear para mujer
+                                </h3>
+
+                                <p>
+                                    COMPRAR →
+                                </p>
+
+                            </div>
+
+                        </a>
+
+                        <a
+                            href="mayoreo.html"
+                            class="slide">
+
+                            <img
+                                src="Imagenes/mayoreo.jpg"
+                                alt="Venta por mayoreo">
+
+                            <div class="slide-info">
+
+                                <span>SC / MAYOREO</span>
+
+                                <h3>
+                                    Compra por mayoreo
+                                </h3>
+
+                                <p>
+                                    VER MÁS →
+                                </p>
+
+                            </div>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <button
+                    class="carrusel-btn siguiente"
+                    id="siguiente"
+                    aria-label="Siguiente">
+
+                    ›
+
+                </button>
+
+            </div>
+
+        </section>
+
+        <section
+            class="categorias-seccion"
+            id="catalogo">
+
+            <div class="titulo">
+
+                <p>SC / CATEGORÍAS</p>
+
+                <h2>Explora tu estilo</h2>
+
+            </div>
+
+
+            <div class="categorias-sc">
+
+                <a
+                    href="Mujeres.html"
+                    class="categoria-sc">
+
+                    <div class="categoria-imagen">
+
+                        <img
+                            src="Imagenes/categorias/mujer.jpg"
+                            alt="Mujeres">
+
+                    </div>
+
+                    <span>
+                        Mujeres
+                    </span>
+
+                </a>
+
+                <a
+                    href="Hombres.html"
+                    class="categoria-sc">
+
+                    <div class="categoria-imagen">
+
+                        <img
+                            src="Imagenes/categorias/hombre.jpg"
+                            alt="Hombres">
+
+                    </div>
+
+                    <span>
+                        Hombres
+                    </span>
+
+                </a>
+
+                <a
+                    href="Niños.html"
+                    class="categoria-sc">
+
+                    <div class="categoria-imagen">
+
+                        <img
+                            src="Imagenes/categorias/ninos.jpg"
+                            alt="Niños">
+
+                    </div>
+
+                    <span>
+                        Niños
+                    </span>
+
+                </a>
+
+                <a
+                    href="accesorios.html"
+                    class="categoria-sc">
+
+                    <div class="categoria-imagen">
+
+                        <img
+                            src="Imagenes/categorias/accesorios.jpg"
+                            alt="Accesorios">
+
+                    </div>
+
+                    <span>
+                        Accesorios
+                    </span>
+
+                </a>
+
+                <a
+                    href="Calzado.html"
+                    class="categoria-sc">
+
+                    <div class="categoria-imagen">
+
+                        <img
+                            src="Imagenes/categorias/calzado.jpg"
+                            alt="Calzado">
+
+                    </div>
+
+                    <span>
+                        Calzado
+                    </span>
+
+                </a>
+
+                <a
+                    href="SC.html"
+                    class="categoria-sc">
+
+                    <div class="categoria-imagen">
+
+                        <img
+                            src="Imagenes/logoSC.jpeg"
+                            alt="Streetwear Club">
+
+                    </div>
+
+                    <span>
+                        SC
+                    </span>
+
+                </a>
+
+                <a
+                    href="Converse.html"
+                    class="categoria-sc">
+
+                    <div class="categoria-imagen">
+
+                        <img
+                            src="Imagenes/converse.jpg"
+                            alt="Converse">
+
+                    </div>
+
+                    <span>
+                        Converse
+                    </span>
+
+                </a>
+
+                <a
+                    href="Vans.html"
+                    class="categoria-sc">
+
+                    <div class="categoria-imagen">
+
+                        <img
+                            src="Imagenes/vans.webp"
+                            alt="Vans">
+
+                    </div>
+
+                    <span>
+                        Vans
+                    </span>
+
+                </a>
+
+                <a
+                    href="puma.html"
+                    class="categoria-sc">
+
+                    <div class="categoria-imagen">
+
+                        <img
+                            src="Imagenes/puma.webp"
+                            alt="Puma">
+
+                    </div>
+
+                    <span>
+                        Puma
+                    </span>
+
+                </a>
+
+                <a
+                    href="Palace.html"
+                    class="categoria-sc">
+
+                    <div class="categoria-imagen">
+
+                        <img
+                            src="Imagenes/palace-logo.webp"
+                            alt="Palace">
+
+                    </div>
+
+                    <span>
+                        Palace
+                    </span>
+
+                </a>
+
+                <a
+                    href="ofertas.html"
+                    class="categoria-sc">
+
+                    <div class="categoria-imagen">
+
+                        <img
+                            src="Imagenes/categorias/ofertas.jpg"
+                            alt="Ofertas">
+
+                    </div>
+
+                    <span>
+                        Ofertas
+                    </span>
+
+                </a>
+
+                <a
+                    href="mayoreo.html"
+                    class="categoria-sc">
+
+                    <div class="categoria-imagen">
+
+                        <img
+                            src="Imagenes/categorias/mayoreo.jpg"
+                            alt="Mayoreo">
+
+                    </div>
+
+                    <span>
+                        Mayoreo
+                    </span>
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="scrip.js"></script>
+
+</body>
+
+</html>
