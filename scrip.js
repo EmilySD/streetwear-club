@@ -1,380 +1,716 @@
-const track = document.getElementById("carruselTrack");
 
-const botonAnterior = document.getElementById("anterior");
+document.addEventListener("DOMContentLoaded", () => {
+    "use strict";
 
-const botonSiguiente = document.getElementById("siguiente");
+    /* =========================================
+       FUNCIONES AUXILIARES
+    ========================================= */
 
-let slides = Array.from(
-    document.querySelectorAll(".slide")
-);
+    const seleccionar = (selector, padre = document) =>
+        padre.querySelector(selector);
 
-let posicion = 0;
+    const seleccionarTodos = (selector, padre = document) =>
+        [...padre.querySelectorAll(selector)];
 
-let anchoSlide = 0;
+    const normalizarTexto = (texto = "") =>
+        texto
+            .toLocaleLowerCase("es")
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .trim();
 
-let maxPosicion = 0;
+    /* =========================================
+       MODO OSCURO
+    ========================================= */
 
-let intervalo;
+    const botonModoOscuro = seleccionar("#modoOscuro");
 
-const puntos = document.querySelectorAll(".punto");
+    if (botonModoOscuro) {
+        botonModoOscuro.addEventListener("click", () => {
+            document.body.classList.toggle("modo-oscuro");
 
+            const activado =
+                document.body.classList.contains("modo-oscuro");
 
-
-function calcularSlide() {
-
-    if (slides.length === 0) {
-        return;
+            botonModoOscuro.setAttribute(
+                "aria-pressed",
+                String(activado)
+            );
+        });
     }
 
-    const slide = slides[0];
+    /* =========================================
+       CARRUSEL
+    ========================================= */
 
-    const estilo =
-        window.getComputedStyle(track);
+    const track = seleccionar("#carruselTrack");
+    const botonAnterior = seleccionar("#anterior");
+    const botonSiguiente = seleccionar("#siguiente");
+    const carrusel = seleccionar(".carrusel");
 
-    const gap =
-        parseFloat(estilo.gap) || 0;
+    let slides = track
+        ? seleccionarTodos(".slide", track)
+        : [];
 
-    anchoSlide =
-        slide.offsetWidth + gap;
+    let posicion = 0;
+    let anchoSlide = 0;
+    let maxPosicion = 0;
+    let intervalo = null;
 
+    const puntos = seleccionarTodos(".punto");
 
-    const carrusel =
-        document.querySelector(".carrusel");
-
-
-
-    const maxDesplazamiento =
-        track.scrollWidth - carrusel.clientWidth;
-
-
-
-    maxPosicion =
-        Math.max(
-            0,
-            Math.ceil(
-                maxDesplazamiento / anchoSlide
-            )
-        );
-
-
-
-    if (posicion > maxPosicion) {
-
-        posicion = maxPosicion;
-
-    }
-
-}
-
-
-
-function moverCarrusel() {
-
-    const carrusel = document.querySelector(".carrusel");
-
-    const maxDesplazamiento =
-        track.scrollWidth - carrusel.clientWidth;
-
-
-    let desplazamiento =
-        posicion * anchoSlide;
-
-
-    desplazamiento =
-        Math.min(desplazamiento, maxDesplazamiento);
-
-
-    track.style.transform =
-        `translateX(-${desplazamiento}px)`;
-
-
-
-
-    puntos.forEach((punto, indice) => {
-
-        punto.classList.remove("activo");
-
-        if (indice === posicion) {
-
-            punto.classList.add("activo");
-
+    function calcularSlide() {
+        if (!track || !carrusel || slides.length === 0) {
+            return;
         }
 
-    });
+        const estilo = window.getComputedStyle(track);
+        const gap = parseFloat(estilo.gap) || 0;
 
-}
+        anchoSlide = slides[0].getBoundingClientRect().width + gap;
 
-puntos.forEach((punto) => {
+        if (anchoSlide <= 0) return;
 
-    punto.addEventListener("click", () => {
+        const maxDesplazamiento = Math.max(
+            0,
+            track.scrollWidth - carrusel.clientWidth
+        );
 
-        posicion = Number(punto.dataset.slide);
+        maxPosicion = Math.max(
+            0,
+            Math.ceil(maxDesplazamiento / anchoSlide)
+        );
 
-        track.style.transition =
-            "transform 0.6s ease";
+        posicion = Math.min(posicion, maxPosicion);
+    }
+
+    function moverCarrusel() {
+        if (!track || !carrusel || anchoSlide <= 0) return;
+
+        const maxDesplazamiento = Math.max(
+            0,
+            track.scrollWidth - carrusel.clientWidth
+        );
+
+        const desplazamiento = Math.min(
+            posicion * anchoSlide,
+            maxDesplazamiento
+        );
+
+        track.style.transform =
+            `translateX(-${desplazamiento}px)`;
+
+        puntos.forEach((punto, indice) => {
+            const activo = indice === posicion;
+
+            punto.classList.toggle("activo", activo);
+            punto.setAttribute("aria-current", String(activo));
+        });
+    }
+
+    function siguienteSlide() {
+        if (maxPosicion <= 0) return;
+
+        posicion = posicion >= maxPosicion
+            ? 0
+            : posicion + 1;
 
         moverCarrusel();
-
-        reiniciarAutomatico();
-
-    });
-
-});
-
-
-function siguienteSlide() {
-
-    posicion++;
-
-    if (posicion > maxPosicion) {
-
-        posicion = 0;
-
     }
 
+    function anteriorSlide() {
+        if (maxPosicion <= 0) return;
 
-    track.style.transition =
-        "transform 0.6s ease";
+        posicion = posicion <= 0
+            ? maxPosicion
+            : posicion - 1;
 
-    moverCarrusel();
-
-}
-
-
-
-function anteriorSlide() {
-
-    posicion--;
-
-    if (posicion < 0) {
-
-        posicion = maxPosicion;
-
+        moverCarrusel();
     }
 
-
-    track.style.transition =
-        "transform 0.6s ease";
-
-    moverCarrusel();
-
-}
-
-
-
-botonSiguiente.addEventListener(
-    "click",
-    () => {
-
-        siguienteSlide();
-
-        reiniciarAutomatico();
-
+    function detenerAutomatico() {
+        if (intervalo !== null) {
+            clearInterval(intervalo);
+            intervalo = null;
+        }
     }
-);
 
+    function iniciarAutomatico() {
+        detenerAutomatico();
 
-botonAnterior.addEventListener(
-    "click",
-    () => {
+        if (document.hidden || maxPosicion <= 0) return;
 
-        anteriorSlide();
-
-        reiniciarAutomatico();
-
+        intervalo = setInterval(siguienteSlide, 3500);
     }
-);
 
+    function reiniciarAutomatico() {
+        iniciarAutomatico();
+    }
 
-
-function iniciarAutomatico() {
-
-    intervalo = setInterval(() => {
-
-        siguienteSlide();
-
-    }, 3000);
-
-}
-
-
-function detenerAutomatico() {
-
-    clearInterval(intervalo);
-
-}
-
-
-function reiniciarAutomatico() {
-
-    detenerAutomatico();
-
-    iniciarAutomatico();
-
-}
-
-
-
-const carrusel =
-    document.querySelector(".carrusel");
-
-carrusel.addEventListener(
-    "mouseenter",
-    detenerAutomatico
-);
-
-carrusel.addEventListener(
-    "mouseleave",
-    iniciarAutomatico
-);
-
-
-
-window.addEventListener(
-    "resize",
-    () => {
-
+    if (track && carrusel) {
         calcularSlide();
 
         moverCarrusel();
+        iniciarAutomatico();
 
+        botonSiguiente?.addEventListener("click", () => {
+            siguienteSlide();
+            reiniciarAutomatico();
+        });
+
+        botonAnterior?.addEventListener("click", () => {
+            anteriorSlide();
+            reiniciarAutomatico();
+        });
+
+        puntos.forEach((punto) => {
+            punto.addEventListener("click", () => {
+                const nuevaPosicion = Number(punto.dataset.slide);
+
+                if (Number.isFinite(nuevaPosicion)) {
+                    posicion = Math.max(
+                        0,
+                        Math.min(nuevaPosicion, maxPosicion)
+                    );
+
+                    moverCarrusel();
+                    reiniciarAutomatico();
+                }
+            });
+        });
+
+        carrusel.addEventListener("mouseenter", detenerAutomatico);
+        carrusel.addEventListener("mouseleave", iniciarAutomatico);
+        carrusel.addEventListener("focusin", detenerAutomatico);
+        carrusel.addEventListener("focusout", iniciarAutomatico);
+
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) {
+                detenerAutomatico();
+            } else {
+                iniciarAutomatico();
+            }
+        });
+
+        window.addEventListener("resize", () => {
+            calcularSlide();
+            moverCarrusel();
+            iniciarAutomatico();
+        });
     }
-);
 
-
+    
 /* =========================================
-   MODO OSCURO
+   CATÁLOGO, BUSCADOR Y FILTROS
 ========================================= */
 
-const modoOscuro =
-    document.getElementById("modoOscuro");
+const catalogo =
+    seleccionar("#catalogoGrid") ||
+    seleccionar(".catalogo-ropa");
 
-modoOscuro.addEventListener(
-    "click",
-    () => {
+if (catalogo) {
+    const productos = Array.from(
+        seleccionarTodos(".producto", catalogo)
+    );
 
-        document.body.classList.toggle(
-            "modo-oscuro"
+    // Guardar el orden original de los productos.
+    productos.forEach((producto, indice) => {
+        producto.dataset.ordenOriginal = String(indice);
+    });
+
+    // Recuperar los controles existentes del HTML.
+    const buscador = seleccionar("#buscadorProductos");
+    const botonBuscar = seleccionar("#botonBuscar");
+    const filtroCategoria = seleccionar("#filtroCategoria");
+    const filtroPrecio = seleccionar("#filtroPrecio");
+    const ordenPrecio = seleccionar("#ordenarProductos");
+    const botonLimpiar = seleccionar("#limpiarFiltros");
+
+    // Mensaje cuando no hay resultados.
+    let sinResultados = seleccionar("#sinResultados");
+
+    if (!sinResultados) {
+        sinResultados = document.createElement("p");
+        sinResultados.id = "sinResultados";
+        sinResultados.hidden = true;
+        sinResultados.textContent =
+            "No encontramos productos. Prueba otra búsqueda o cambia los filtros.";
+
+        catalogo.after(sinResultados);
+    }
+
+    // Agregar una opción sin duplicarla.
+    function agregarOpcion(select, valor, texto) {
+        if (!select) return;
+
+        const existe = Array.from(select.options).some(
+            opcion => opcion.value === valor
         );
 
+        if (!existe) {
+            select.add(new Option(texto, valor));
+        }
     }
-);
 
+    // Crear categorías completas: tipo de prenda y género.
+    if (filtroCategoria) {
+        const categorias = new Map();
 
+        productos.forEach(producto => {
+            const texto =
+                producto.dataset.categoria ||
+                seleccionar(".categoria", producto)?.textContent ||
+                "";
 
-calcularSlide();
+            const nombre = texto.trim();
 
-moverCarrusel();
+            if (nombre) {
+                const clave = normalizarTexto(nombre);
 
-iniciarAutomatico();
+                if (!categorias.has(clave)) {
+                    categorias.set(clave, nombre);
+                }
+            }
+        });
 
+        filtroCategoria.innerHTML = "";
+        filtroCategoria.add(
+            new Option("Todas las categorías", "")
+        );
 
+        Array.from(categorias.entries())
+            .sort((a, b) => a[1].localeCompare(b[1], "es"))
+            .forEach(([clave, nombre]) => {
+                agregarOpcion(filtroCategoria, clave, nombre);
+            });
+    }
 
+    // Opciones de precio máximo.
+    if (filtroPrecio) {
+        filtroPrecio.innerHTML = "";
+        filtroPrecio.add(new Option("Cualquier precio", ""));
 
-const botonBuscar = document.querySelector('.iconos button[title="Buscar"]');
-const productos = document.querySelectorAll(".producto");
+        [
+            ["250", "Hasta $250"],
+            ["300", "Hasta $300"],
+            ["500", "Hasta $500"],
+            ["1000", "Hasta $1,000"],
+            ["2000", "Hasta $2,000"],
+            ["5000", "Hasta $5,000"]
+        ].forEach(([valor, texto]) => {
+            agregarOpcion(filtroPrecio, valor, texto);
+        });
+    }
 
-const barraBusqueda = document.createElement("div");
+    // Opciones de ordenamiento.
+    if (ordenPrecio) {
+        ordenPrecio.innerHTML = "";
 
-barraBusqueda.className = "barra-busqueda";
+        [
+            ["original", "Orden original"],
+            ["menor", "Precio: menor a mayor"],
+            ["mayor", "Precio: mayor a menor"],
+            ["nombre", "Nombre: A-Z"]
+        ].forEach(([valor, texto]) => {
+            agregarOpcion(ordenPrecio, valor, texto);
+        });
+    }
 
-barraBusqueda.innerHTML = `
-    <input 
-        type="text" 
-        id="buscador" 
-        placeholder="Buscar productos..."
-        autocomplete="off"
-    >
-    <button id="cerrarBusqueda" type="button">✕</button>
-`;
+    // Obtener el precio numérico.
+    function obtenerPrecio(producto) {
+        if (producto.dataset.precio) {
+            const precio = Number(producto.dataset.precio);
 
-document.querySelector("header").after(barraBusqueda);
-
-const mensajeNoEncontrado = document.createElement("p");
-
-mensajeNoEncontrado.className = "mensaje-no-encontrado";
-mensajeNoEncontrado.textContent = "Producto no encontrado :(";
-mensajeNoEncontrado.style.display = "none";
-
-document.querySelector(".catalogo-ropa").prepend(mensajeNoEncontrado);
-
-botonBuscar.addEventListener("click", function () {
-    barraBusqueda.classList.add("activa");
-    document.getElementById("buscador").focus();
-});
-
-document.getElementById("buscador").addEventListener("input", function () {
-
-    const texto = this.value.toLowerCase().trim();
-    let encontrados = 0;
-
-    productos.forEach(function (producto) {
-
-        const contenido = producto.textContent.toLowerCase();
-
-        if (contenido.includes(texto)) {
-            producto.style.display = "";
-            encontrados++;
-        } else {
-            producto.style.display = "none";
+            if (Number.isFinite(precio)) {
+                return precio;
+            }
         }
 
-    });
+        const texto =
+            seleccionar(".precio strong", producto)?.textContent || "";
 
-    if (texto !== "" && encontrados === 0) {
-        mensajeNoEncontrado.classList.add("visible");
-    } else {
-        mensajeNoEncontrado.classList.remove("visible");
+        const numero = Number(
+            texto.replace(/[^\d.,]/g, "").replace(",", ".")
+        );
+
+        return Number.isFinite(numero) ? numero : 0;
     }
 
-});
+    // Obtener la categoría completa, incluido el género.
+    function obtenerCategoria(producto) {
+        const texto =
+            producto.dataset.categoria ||
+            seleccionar(".categoria", producto)?.textContent ||
+            "";
 
-document.getElementById("buscador").addEventListener("keydown", function (evento) {
+        return normalizarTexto(texto.trim());
+    }
 
-    if (evento.key === "Enter") {
+    // Aplicar búsqueda, categoría, precio y orden.
+    function aplicarFiltros() {
+        const busqueda = normalizarTexto(
+            buscador?.value || ""
+        );
 
-        evento.preventDefault();
+        const categoriaElegida = normalizarTexto(
+            filtroCategoria?.value || ""
+        );
 
-        const texto = this.value.toLowerCase().trim();
+        const precioElegido = filtroPrecio?.value || "";
+        const orden = ordenPrecio?.value || "original";
 
-        if (texto !== "") {
-            document.getElementById("catalogo").scrollIntoView({
-                behavior: "smooth"
+        let cantidadVisibles = 0;
+
+        productos.forEach(producto => {
+            const contenido = normalizarTexto(
+                producto.textContent
+            );
+
+            const categoria = obtenerCategoria(producto);
+            const precio = obtenerPrecio(producto);
+
+            const coincideTexto =
+                !busqueda || contenido.includes(busqueda);
+
+            const coincideCategoria =
+                !categoriaElegida ||
+                categoria === categoriaElegida;
+
+            const coincidePrecio =
+                !precioElegido ||
+                precio <= Number(precioElegido);
+
+            const mostrar =
+                coincideTexto &&
+                coincideCategoria &&
+                coincidePrecio;
+
+            producto.hidden = !mostrar;
+
+            if (mostrar) {
+                cantidadVisibles++;
+            }
+        });
+
+        // Ordenar los productos que cumplen los filtros.
+        const visiblesOrdenados = productos
+            .filter(producto => !producto.hidden)
+            .sort((a, b) => {
+                if (orden === "menor") {
+                    return obtenerPrecio(a) - obtenerPrecio(b);
+                }
+
+                if (orden === "mayor") {
+                    return obtenerPrecio(b) - obtenerPrecio(a);
+                }
+
+                if (orden === "nombre") {
+                    const nombreA =
+                        seleccionar("h3", a)?.textContent || "";
+
+                    const nombreB =
+                        seleccionar("h3", b)?.textContent || "";
+
+                    return nombreA.localeCompare(nombreB, "es");
+                }
+
+                return (
+                    Number(a.dataset.ordenOriginal) -
+                    Number(b.dataset.ordenOriginal)
+                );
+            });
+
+        // Colocar primero los productos visibles.
+        visiblesOrdenados.forEach(producto => {
+            catalogo.appendChild(producto);
+        });
+
+        // Colocar al final los productos ocultos.
+        productos
+            .filter(producto => producto.hidden)
+            .sort((a, b) =>
+                Number(a.dataset.ordenOriginal) -
+                Number(b.dataset.ordenOriginal)
+            )
+            .forEach(producto => {
+                catalogo.appendChild(producto);
+            });
+
+        // Mostrar el mensaje si no hay coincidencias.
+        sinResultados.hidden = cantidadVisibles > 0;
+    }
+
+    // Eventos de búsqueda y filtros.
+    buscador?.addEventListener("input", aplicarFiltros);
+    filtroCategoria?.addEventListener("change", aplicarFiltros);
+    filtroPrecio?.addEventListener("change", aplicarFiltros);
+    ordenPrecio?.addEventListener("change", aplicarFiltros);
+
+    // Botón Buscar, si existe en el HTML.
+    botonBuscar?.addEventListener("click", () => {
+        aplicarFiltros();
+
+        catalogo.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    });
+
+    // Buscar al presionar Enter.
+    buscador?.addEventListener("keydown", evento => {
+        if (evento.key === "Enter") {
+            evento.preventDefault();
+            aplicarFiltros();
+
+            catalogo.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
             });
         }
+    });
 
+    // Limpiar todos los filtros.
+    botonLimpiar?.addEventListener("click", () => {
+        if (buscador) buscador.value = "";
+        if (filtroCategoria) filtroCategoria.value = "";
+        if (filtroPrecio) filtroPrecio.value = "";
+        if (ordenPrecio) ordenPrecio.value = "original";
+
+        aplicarFiltros();
+    });
+
+    // Mostrar todos los productos al iniciar.
+    aplicarFiltros();
+}
+
+
+    /* =========================================
+       BUSCADOR DESPLEGABLE DEL ENCABEZADO
+    ========================================= */
+
+    const botonBuscarEncabezado = seleccionar(
+        '.iconos button[title="Buscar"]'
+    );
+
+    const barraBusqueda = document.createElement("div");
+    barraBusqueda.className = "barra-busqueda";
+    barraBusqueda.innerHTML = `
+        <input
+            type="search"
+            id="buscadorEncabezado"
+            placeholder="Buscar en el catálogo..."
+            autocomplete="off"
+            aria-label="Buscar en el catálogo"
+        >
+        <button type="button" id="cerrarBusqueda" aria-label="Cerrar búsqueda">
+            ✕
+        </button>
+    `;
+
+    if (botonBuscarEncabezado && document.querySelector("header")) {
+        document.querySelector("header").after(barraBusqueda);
+
+        const campoEncabezado = seleccionar("#buscadorEncabezado");
+
+        botonBuscarEncabezado.addEventListener("click", () => {
+            barraBusqueda.classList.toggle("activa");
+
+            if (barraBusqueda.classList.contains("activa")) {
+                campoEncabezado.focus();
+            }
+        });
+
+        campoEncabezado.addEventListener("input", () => {
+            const campoCatalogo = seleccionar("#buscadorProductos");
+
+            if (campoCatalogo) {
+                campoCatalogo.value = campoEncabezado.value;
+                campoCatalogo.dispatchEvent(
+                    new Event("input", { bubbles: true })
+                );
+            }
+        });
+
+        seleccionar("#cerrarBusqueda").addEventListener("click", () => {
+            barraBusqueda.classList.remove("activa");
+            campoEncabezado.value = "";
+
+            const campoCatalogo = seleccionar("#buscadorProductos");
+
+            if (campoCatalogo) {
+                campoCatalogo.value = "";
+                campoCatalogo.dispatchEvent(
+                    new Event("input", { bubbles: true })
+                );
+            }
+        });
     }
 
-});
+    /* =========================================
+       BOTÓN DE FILTROS DEL ENCABEZADO
+    ========================================= */
 
-document.getElementById("cerrarBusqueda").addEventListener("click", function () {
+    const botonFiltros = seleccionar(
+        '.iconos button[title="Filtros"]'
+    );
 
-    barraBusqueda.classList.remove("activa");
+    botonFiltros?.addEventListener("click", () => {
+        const filtros = seleccionar(".catalogo-filtros");
 
-    document.getElementById("buscador").value = "";
+        if (filtros) {
+            filtros.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
 
-    productos.forEach(function (producto) {
-        producto.style.display = "";
+            filtros.classList.add("filtros-resaltados");
+
+            setTimeout(() => {
+                filtros.classList.remove("filtros-resaltados");
+            }, 1200);
+        }
     });
 
-    mensajeNoEncontrado.style.display = "none";
+    /* =========================================
+       FAVORITOS
+    ========================================= */
 
+    seleccionarTodos(".favorito").forEach((boton) => {
+        boton.setAttribute(
+            "aria-pressed",
+            String(boton.classList.contains("activo"))
+        );
+
+        boton.addEventListener("click", () => {
+            const activo = boton.classList.toggle("activo");
+
+            boton.textContent = activo ? "♥" : "♡";
+            boton.setAttribute("aria-pressed", String(activo));
+            boton.setAttribute(
+                "aria-label",
+                activo ? "Quitar de favoritos" : "Agregar a favoritos"
+            );
+        });
+    });
 });
 
-const botonesFavorito = document.querySelectorAll(".favorito");
+/* =========================================
+   LUPA DEL ENCABEZADO: IR AL BUSCADOR
+========================================= */
 
-botonesFavorito.forEach(function (boton) {
+const botonBuscarCatalogo = document.getElementById("botonBuscarCatalogo");
+const buscadorProductos = document.getElementById("buscadorProductos");
 
-    boton.addEventListener("click", function () {
+if (botonBuscarCatalogo && buscadorProductos) {
+    botonBuscarCatalogo.addEventListener("click", function () {
+        buscadorProductos.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
 
-        if (this.textContent.trim() === "♡") {
-            this.textContent = "♥";
-            this.classList.add("activo");
+        buscadorProductos.focus();
+    });
+}
+
+
+/* =====================================
+   FAVORITOS DE STREETWEAR CLUB
+===================================== */
+
+(() => {
+    const CLAVE_FAVORITOS = "sc_favoritos";
+
+    function leerFavoritos() {
+        try {
+            const datos = JSON.parse(localStorage.getItem(CLAVE_FAVORITOS));
+            return Array.isArray(datos) ? datos : [];
+        } catch {
+            return [];
+        }
+    }
+
+    function guardarFavoritos(datos) {
+        localStorage.setItem(CLAVE_FAVORITOS, JSON.stringify(datos));
+    }
+
+    
+function obtenerProducto(boton) {
+    const tarjeta = boton.closest(".producto");
+    if (!tarjeta) return null;
+
+    const imagen = tarjeta.querySelector(".imagen-producto img");
+    const nombre = tarjeta.querySelector(".info-producto h3");
+    const categoria = tarjeta.querySelector(".categoria");
+    const precio = tarjeta.querySelector(".precio strong");
+
+    if (!imagen || !nombre || !precio) return null;
+
+    const rutaImagen = imagen.getAttribute("src");
+    const nombreProducto = nombre.textContent.trim();
+
+    return {
+        id: new URL(rutaImagen, document.baseURI).pathname +
+            "|" + nombreProducto,
+        nombre: nombreProducto,
+        imagen: rutaImagen,
+        categoria: categoria
+            ? categoria.textContent.trim()
+            : "Streetwear",
+        precio: Number(
+            precio.textContent
+                .replace(/[^\d.,]/g, "")
+                .replace(/,/g, "")
+        )
+    };
+}
+
+
+    function actualizarCorazones() {
+        const favoritos = leerFavoritos();
+        const ids = new Set(favoritos.map(producto => producto.id));
+
+        document.querySelectorAll(".producto .favorito").forEach(boton => {
+            const producto = obtenerProducto(boton);
+            const activo = producto && ids.has(producto.id);
+
+            boton.classList.toggle("activo", Boolean(activo));
+            boton.textContent = activo ? "♥" : "♡";
+            boton.setAttribute("aria-pressed", String(Boolean(activo)));
+            boton.setAttribute(
+                "aria-label",
+                activo ? "Quitar de favoritos" : "Agregar a favoritos"
+            );
+            boton.title = activo ? "Quitar de favoritos" : "Agregar a favoritos";
+        });
+    }
+
+    document.addEventListener("click", evento => {
+        const boton = evento.target.closest(".producto .favorito");
+        if (!boton) return;
+
+        const producto = obtenerProducto(boton);
+        if (!producto) return;
+
+        const favoritos = leerFavoritos();
+        const indice = favoritos.findIndex(item => item.id === producto.id);
+
+        if (indice >= 0) {
+            favoritos.splice(indice, 1);
         } else {
-            this.textContent = "♡";
-            this.classList.remove("activo");
+            favoritos.push(producto);
         }
 
+        guardarFavoritos(favoritos);
+        actualizarCorazones();
     });
 
-});
+    window.addEventListener("storage", evento => {
+        if (evento.key === CLAVE_FAVORITOS) actualizarCorazones();
+    });
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", actualizarCorazones);
+    } else {
+        actualizarCorazones();
+    }
+})();
