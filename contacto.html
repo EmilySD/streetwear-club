@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | Streetwear Club</title>
+    <link rel="stylesheet" href="pagina-principal.css">
+    <link rel="stylesheet" href="contacto.css">
+</head>
+<body>
+    <header id="headerPrincipal">
+        <div class="nav">
+            <div class="logo">
+                <span class="logo-icon">
+                    <img src="Imagenes/logoSC.jpeg" alt="Logo SC">
+                </span>
+                <strong>SC</strong>
+                <span>Streetwear Club</span>
+            </div>
+            <nav class="menu">
+                <a href="pagina-principal.html">Inicio</a>
+                <a href="contacto.html">Contacto</a>
+                <a href="#ayuda" class="activo">Ayuda</a>
+            </nav>
+            <div class="iconos">
+                <a href="carrito.html" class="boton-carrito" title="Ver carrito" aria-label="Ver carrito">🛒</a>
+                <a href="favoritos.html" title="Favoritos">♡</a>
+                <button id="modoOscuro" class="dark-button" type="button" title="Cambiar modo">◐</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="contacto-contenedor">
+        <section class="contacto-introduccion">
+            <span class="contacto-etiqueta">STREETWEAR CLUB</span>
+            <h1>HABLEMOS</h1>
+            <p>¿Tienes alguna duda, sugerencia o necesitas ayuda con tu compra? Estamos aquí para escucharte.</p>
+        </section>
+
+        <section class="contacto-principal">
+            <div class="contacto-columna contacto-whatsapp" id="whatsapp">
+                <span class="contacto-numero">01 / ATENCIÓN DIRECTA</span>
+                <h2>¿Necesitas ayuda inmediata?</h2>
+                <p class="contacto-descripcion">Estamos disponibles para resolver tus dudas sobre productos, pedidos, tallas y compras.</p>
+
+                <div class="contacto-dato">
+                    <span class="contacto-icono">◷</span>
+                    <div>
+                        <h3>Horario de atención</h3>
+                        <p>Lunes a viernes</p>
+                        <p>9:00 a. m. - 6:00 p. m.</p>
+                    </div>
+                </div>
+
+                <div class="contacto-dato">
+                    <span class="contacto-icono">☏</span>
+                    <div>
+                        <h3>WhatsApp</h3>
+                        <p>Atención personalizada</p>
+                        <a class="boton-whatsapp" href="https://wa.me/524495453186?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20Streetwear%20Club" target="_blank" rel="noopener">Contactar por WhatsApp ↗</a>
+                    </div>
+                </div>
+
+                <div class="whatsapp-mensaje">
+                    <span>SC</span>
+                    <p>Tu estilo es importante para nosotros. ¡Estamos para ayudarte!</p>
+                </div>
+            </div>
+
+            <div class="contacto-columna contacto-correo" id="correo">
+                <span class="contacto-numero">02 / MENSAJE PERSONALIZADO</span>
+                <h2>Escríbenos un correo</h2>
+                <p class="contacto-descripcion">Cuéntanos qué necesitas. Completa el formulario y prepara tu mensaje para enviarlo a nuestro equipo.</p>
+
+                <form id="formularioContacto">
+                    <div class="campo-contacto">
+                        <label for="nombre">Nombre completo</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre" required minlength="3" maxlength="70">
+                    </div>
+
+                    <div class="campo-contacto">
+                        <label for="correo">Correo electrónico</label>
+                        <input type="email" id="correo" name="correo" placeholder="ejemplo@correo.com" required maxlength="100">
+                    </div>
+
+                    <div class="campo-contacto">
+                        <label for="asunto">Asunto</label>
+                        <select id="asunto" name="asunto" required>
+                            <option value="">Selecciona un asunto</option>
+                            <option value="Información de productos">Información de productos</option>
+                            <option value="Problema con un pedido">Problema con un pedido</option>
+                            <option value="Pagos">Pagos</option>
+                            <option value="Mayoreo">Mayoreo</option>
+                            <option value="Sugerencia">Sugerencia</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="campo-contacto">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntanos cómo podemos ayudarte..." required minlength="10" maxlength="1000"></textarea>
+                    </div>
+
+                    <div class="contacto-privacidad">
+                        <input type="checkbox" id="aceptar" required>
+                        <label for="aceptar">Confirmo que los datos proporcionados son correctos.</label>
+                    </div>
+
+                    <button type="submit" class="boton-enviar">Enviar mensaje <span>➜</span></button>
+                    <p id="mensajeEstado" class="mensaje-estado" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+
+        <section class="contacto-final">
+            <h2>Tu estilo también merece atención.</h2>
+            <p>Gracias por formar parte de Streetwear Club.</p>
+        </section>
+    </main>
+
+    <footer id="ayuda">
+        <div class="footer-grid">
+            <div>
+                <span class="logo-icon">
+                    <img src="Imagenes/logoSC.jpeg" alt="Logo SC">
+                </span>
+                <h3>SC</h3>
+                <p>Streetwear Club</p>
+                <p>Tu estilo. Tu calle.</p>
+            </div>
+            <div>
+                <h3>Inicio</h3>
+                <a href="pagina-principal.html">Inicio</a>
+            </div>
+            <div>
+                <h3>Novedades</h3>
+                <a href="pagina-principal.html#novedades">Novedades</a>
+                <a href="pagina-principal.html#novedades">Producto destacado</a>
+                <a href="pagina-principal.html#novedades">Ofertas de la semana</a>
+                <a href="pagina-principal.html#novedades">Nueva colección</a>
+                <a href="pagina-principal.html#novedades">Streetwear para hombre</a>
+                <a href="pagina-principal.html#novedades">Streetwear para mujer</a>
+                <a href="pagina-principal.html#novedades">Compra por mayoreo</a>
+            </div>
+            <div>
+                <h3>Catálogo</h3>
+                <a href="pagina-principal.html">Catálogo</a>
+                <a href="Mujeres.html">Mujeres</a>
+                <a href="Hombres.html">Hombres</a>
+                <a href="Niños.html">Niños</a>
+                <a href="Calzado.html">Calzado</a>
+                <a href="accsesorios.html">Accesorios</a>
+                <a href="Converse.html">Converse</a>
+                <a href="Vans.html">Vans</a>
+                <a href="puma.html">Puma</a>
+                <a href="Palace.html">Palace</a>
+                <a href="ofertas.html">Ofertas</a>
+                <a href="mayoreo.html">Mayoreo</a>
+            </div>
+            <div>
+                <h3>Compras</h3>
+                <a href="carrito.html">Carrito</a>
+                <a href="favoritos.html">Favoritos</a>
+            </div>
+            <div>
+                <h3>Nosotros</h3>
+                <h5>Entérate más sobre nosotros</h5>
+                <a href="nosotros.html">Nosotros</a>
+                <a href="nosotros.html#nosotros">Misión y visión</a>
+                <a href="nosotros.html#preguntas">Preguntas frecuentes</a>
+            </div>
+            <div>
+                <h3>Redes</h3>
+                <a href="redes.html">Redes sociales</a>
+                <a href="redes.html">Instagram</a>
+            </div>
+            <div>
+                <h3>Contacto</h3>
+                <h5>Ponte en contacto con nosotros</h5>
+                <a href="contacto.html">Contacto</a>
+                <a href="contacto.html#whatsapp">WhatsApp</a>
+                <a href="contacto.html#correo">Correo</a>
+            </div>
+            <div>
+                <h3>Sucursales</h3>
+                <a href="sucursales.html">Sucursales</a>
+                <a href="sucursales.html">Maps</a>
+                <a href="sucursales.html">Horarios</a>
+            </div>
+        </div>
+        <div class="copy">© 2026 SC — Streetwear Club</div>
+    </footer>
+
+    <script src="contacto.js"></script>
+    <script src="pagina-principal.js"></script>
+</body>
+</html>

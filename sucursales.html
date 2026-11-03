@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streetwear Club | Sucursales</title>
+
+    <link rel="stylesheet" href="pagina-principal.css">
+    <link rel="stylesheet" href="sucursales.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+
+<body>
+    <header id="headerPrincipal">
+        <div class="nav">
+            <div class="logo">
+                <span class="logo-icon">
+                    <img src="Imagenes/logoSC.jpeg" alt="Logo SC">
+                </span>
+                <strong>SC</strong>
+                <span>Streetwear Club</span>
+            </div>
+
+            <nav class="menu">
+                <a href="pagina-principal.html">Inicio</a>
+                <a href="sucursales.html" class="activo">Sucursales</a>
+                <a href="contacto.html">Ayuda</a>
+            </nav>
+
+            <div class="iconos">
+                <a href="carrito.html" class="boton-carrito" title="Ver carrito" aria-label="Ver carrito">🛒</a>
+                <a href="favoritos.html" title="Favoritos">♡</a>
+                <button id="modoOscuro" class="dark-button" type="button" title="Cambiar modo">◐</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="sucursales-contenedor">
+        <section class="sucursales-intro">
+            <span class="sucursales-etiqueta">STREETWEAR CLUB</span>
+            <h1>NUESTRAS SUCURSALES</h1>
+            <p>La moda urbana está más cerca de ti. Encuentra establecimientos de referencia y descubre nuevas
+                propuestas de estilo.</p>
+            <div class="linea-decorativa"></div>
+        </section>
+
+        <section class="sucursales-seccion">
+            <div class="sucursales-titulo">
+                <span>UBICACIONES</span>
+                <h2>ENCUÉNTRALOS</h2>
+                <p>Explora el mapa, selecciona un establecimiento y consulta su ubicación.</p>
+            </div>
+
+            <div class="sucursales-contenido">
+                <div class="mapa-columna">
+                    <div class="mapa-encabezado">
+                        <h3>MAPA DE ESTABLECIMIENTOS</h3>
+                        <span>MX</span>
+                    </div>
+
+                    <div class="mapa-contenedor">
+                        <div id="mapaSucursales"></div>
+                    </div>
+
+                    <p class="mapa-ayuda">Puedes arrastrar el mapa, acercar y alejar para explorar las ubicaciones.</p>
+                </div>
+
+                <div class="lista-sucursales">
+                    <article class="tarjeta-sucursal">
+                        <div class="sucursal-superior">
+                            <span class="sucursal-numero">01</span>
+                            <span class="sucursal-estado">AGUASCALIENTES</span>
+                        </div>
+
+                        <h3>INSANE CO.</h3>
+                        <p class="sucursal-ubicacion">📍 Gral. Francisco Villa 402, colonia Gremial, Aguascalientes,
+                            México.</p>
+                        <div class="sucursal-separador"></div>
+
+                        <div class="horario-sucursal">
+                            <h4>HORARIOS DE ATENCIÓN</h4>
+                            <p><span>Lunes a viernes</span><strong>9:00 a.m. - 6:00 p.m.</strong></p>
+                            <p><span>Sábado</span><strong>9:00 a.m. - 2:30 p.m.</strong></p>
+                            <p><span>Domingo</span><strong>Cerrado</strong></p>
+                        </div>
+
+                        <button class="boton-mapa" type="button" data-sucursal="insane">Ver ubicación en el
+                            mapa</button>
+                        <a class="enlace-maps"
+                            href="https://www.google.com/maps/search/?api=1&query=Insane+Co+Gral+Francisco+Villa+402+Aguascalientes"
+                            target="_blank" rel="noopener noreferrer">Abrir en Google Maps ↗</a>
+                    </article>
+
+                    <article class="tarjeta-sucursal">
+                        <div class="sucursal-superior">
+                            <span class="sucursal-numero">02</span>
+                            <span class="sucursal-estado">CIUDAD DE MÉXICO</span>
+                        </div>
+
+                        <h3>LOOSE BLUES</h3>
+                        <p class="sucursal-ubicacion">📍 Calle Dinamarca 44, colonia Juárez, alcaldía Cuauhtémoc, Ciudad
+                            de México.</p>
+                        <div class="sucursal-separador"></div>
+
+                        <div class="horario-sucursal">
+                            <h4>HORARIOS DE ATENCIÓN</h4>
+                            <p><span>Lunes a sábado</span><strong>12:00 p.m. - 8:00 p.m.</strong></p>
+                            <p><span>Domingo</span><strong>11:00 a.m. - 7:00 p.m.</strong></p>
+                        </div>
+
+                        <button class="boton-mapa" type="button" data-sucursal="looseblues">Ver ubicación en el
+                            mapa</button>
+                        <a class="enlace-maps"
+                            href="https://www.google.com/maps/search/?api=1&query=Loose+Blues+Dinamarca+44+Juarez+CDMX"
+                            target="_blank" rel="noopener noreferrer">Abrir en Google Maps ↗</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="sucursales-final">
+            <h2>TE ESPERAMOS EN SC</h2>
+            <p>Descubre nuevas colecciones, encuentra tu estilo y vive la experiencia Streetwear Club.</p>
+            <a href="pagina-principal.html" class="boton-tienda">EXPLORAR TIENDA</a>
+        </section>
+    </main>
+
+    <footer id="ayuda">
+        <div class="footer-grid">
+            <div>
+                <span class="logo-icon">
+                    <img src="Imagenes/logoSC.jpeg" alt="Logo SC">
+                </span>
+                <h3>SC</h3>
+                <p>Streetwear Club</p>
+                <p>Tu estilo. Tu calle.</p>
+            </div>
+
+            <div>
+                <h3>Inicio</h3>
+                <a href="pagina-principal.html">Inicio</a>
+            </div>
+
+            <div>
+                <h3>Novedades</h3>
+                <a href="pagina-principal.html#novedades">Novedades</a>
+                <a href="pagina-principal.html#novedades">Producto destacado</a>
+                <a href="pagina-principal.html#novedades">Ofertas de la semana</a>
+                <a href="pagina-principal.html#novedades">Nueva colección</a>
+                <a href="pagina-principal.html#novedades">Streetwear para hombre</a>
+                <a href="pagina-principal.html#novedades">Streetwear para mujer</a>
+                <a href="pagina-principal.html#novedades">Compra por mayoreo</a>
+            </div>
+
+            <div>
+                <h3>Catálogo</h3>
+                <a href="pagina-principal.html">Catálogo</a>
+                <a href="Mujeres.html">Mujeres</a>
+                <a href="Hombres.html">Hombres</a>
+                <a href="Niños.html">Niños</a>
+                <a href="Calzado.html">Calzado</a>
+                <a href="accesorios.html">Accesorios</a>
+                <a href="Converse.html">Converse</a>
+                <a href="Vans.html">Vans</a>
+                <a href="puma.html">Puma</a>
+                <a href="Palace.html">Palace</a>
+                <a href="ofertas.html">Ofertas</a>
+                <a href="mayoreo.html">Mayoreo</a>
+            </div>
+
+            <div>
+                <h3>Compras</h3>
+                <a href="carrito.html">Carrito</a>
+                <a href="favoritos.html">Favoritos</a>
+            </div>
+
+            <div>
+                <h3>Nosotros</h3>
+                <h5>Entérate más sobre nosotros</h5>
+                <a href="nosotros.html">Nosotros</a>
+                <a href="nosotros.html#nosotros">Misión y visión</a>
+                <a href="nosotros.html#preguntas">Preguntas frecuentes</a>
+            </div>
+
+            <div>
+                <h3>Redes</h3>
+                <a href="redes.html">Redes sociales</a>
+                <a href="redes.html">Instagram</a>
+            </div>
+
+            <div>
+                <h3>Contacto</h3>
+                <h5>Ponte en contacto con nosotros</h5>
+                <a href="contacto.html">Contacto</a>
+                <a href="contacto.html#whatsapp">WhatsApp</a>
+                <a href="contacto.html#correo">Correo</a>
+            </div>
+
+            <div>
+                <h3>Sucursales</h3>
+                <a href="sucursales.html">Sucursales</a>
+                <a href="sucursales.html">Maps</a>
+                <a href="sucursales.html">Horarios</a>
+            </div>
+        </div>
+
+        <div class="copy">
+            © 2026 SC — Streetwear Club
+        </div>
+    </footer>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="sucursale.js"></script>
+    <script src="pagina-principal.js"></script>
+</body>
+
+</html>

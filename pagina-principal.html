@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streetwear Club | SC</title>
+    <link rel="stylesheet" href="pagina-principal.css">
+</head>
+
+<body>
+    <header id="headerPrincipal">
+        <div class="nav">
+            <div class="logo">
+                <span class="logo-icon">
+                    <img src="Imagenes/logoSC.jpeg" alt="Logo SC">
+                </span>
+                <strong>SC</strong>
+                <span>Streetwear Club</span>
+            </div>
+
+            <nav class="menu">
+                <a href="#inicio">Inicio</a>
+                <a href="#novedades">Novedades</a>
+                <a href="#catalogo">Catálogo</a>
+                <a href="nosotros.html">Nosotros</a>
+                <a href="redes.html">Redes</a>
+                <a href="contacto.html">Contacto</a>
+                <a href="sucursales.html">Sucursales</a>
+                <a href="#ayuda">Ayuda</a>
+            </nav>
+
+            <div class="iconos">
+                <button type="button" id="botonBuscarCatalogo" title="Ir al buscador"
+                    aria-label="Buscar productos">🔍</button>
+                <a href="carrito.html" class="boton-carrito" title="Ver carrito" aria-label="Ver carrito">🛒</a>
+                <a href="favoritos.html" title="Favoritos">♡</a>
+                <button id="modoOscuro" class="dark-button" type="button" title="Cambiar modo">◐</button>
+            </div>
+
+            <div class="menu-scroll" id="menuScroll">
+                <button type="button" id="botonMenuScroll" title="Abrir menú" aria-label="Abrir menú"
+                    aria-expanded="false">☰</button>
+
+                <div class="contenido-menu-scroll" id="contenidoMenuScroll">
+                    <a href="#inicio">Inicio</a>
+                    <a href="#novedades">Novedades</a>
+                    <a href="#catalogo">Catálogo</a>
+                    <a href="nosotros.html">Nosotros</a>
+                    <a href="#redes">Redes</a>
+                    <a href="#contacto">Contacto</a>
+                    <a href="sucursales.html">Sucursales</a>
+                    <a href="#ayuda">Ayuda</a>
+                    <div class="separador-menu"></div>
+                    <button type="button" id="menuBuscar">🔍 Buscador</button>
+                    <a href="carrito.html">🛒 Carrito</a>
+                    <a href="favoritos.html">♡ Favoritos</a>
+                    <button type="button" id="menuModoOscuro">◐ Modo oscuro</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <div class="hero-contenido">
+                <img src="Imagenes/banner.png" alt="Streetwear Club" class="banner-imagen">
+                <a href="#catalogo" class="boton-hero">VER COLECCIÓN</a>
+            </div>
+        </section>
+
+        <section class="carrusel-seccion" id="novedades">
+            <div class="titulo-carrusel">
+                <p>SC / DESTACADOS</p>
+                <h2>Descubre lo nuevo</h2>
+                <span>Explora las novedades de Streetwear Club</span>
+            </div>
+
+            <div class="carrusel-contenedor">
+                <button class="carrusel-btn anterior" id="anterior" aria-label="Anterior">‹</button>
+
+                <div class="carrusel">
+                    <div class="carrusel-track" id="carruselTrack">
+                        <a href="destacados.html" class="slide">
+                            <img src="Imagenes/destacado-modelo.png" alt="Productos destacados">
+                            <div class="slide-info">
+                                <span>SC / DESTACADO</span>
+                                <h3>Productos destacados</h3>
+                                <p>VER AHORA →</p>
+                            </div>
+                        </a>
+
+                        <a href="ofertas.html" class="slide">
+                            <img src="Imagenes/ofertaT1.jpeg" alt="Ofertas">
+                            <div class="slide-info">
+                                <span>SC / OFERTA</span>
+                                <h3>Ofertas de la semana</h3>
+                                <p>VER OFERTAS →</p>
+                            </div>
+                        </a>
+
+                        <a href="nueva-coleccion.html" class="slide">
+                            <img src="Imagenes/pantalon-new-h.jpeg" alt="Nueva colección">
+                            <div class="slide-info">
+                                <span>SC / NUEVO</span>
+                                <h3>Nueva colección</h3>
+                                <p>DESCUBRIR →</p>
+                            </div>
+                        </a>
+
+                        <a href="Hombres.html" class="slide">
+                            <img src="Imagenes/modelo-h.png" alt="Ropa de hombre">
+                            <div class="slide-info">
+                                <span>SC / HOMBRE</span>
+                                <h3>Streetwear para hombre</h3>
+                                <p>COMPRAR →</p>
+                            </div>
+                        </a>
+
+                        <a href="Mujeres.html" class="slide">
+                            <img src="Imagenes/modelo-m.jpeg" alt="Ropa de mujer">
+                            <div class="slide-info">
+                                <span>SC / MUJER</span>
+                                <h3>Streetwear para mujer</h3>
+                                <p>COMPRAR →</p>
+                            </div>
+                        </a>
+
+                        <a href="mayoreo.html" class="slide">
+                            <img src="Imagenes/compras por mayoreo-modelo.png" alt="Venta por mayoreo">
+                            <div class="slide-info">
+                                <span>SC / MAYOREO</span>
+                                <h3>Compra por mayoreo</h3>
+                                <p>VER MÁS →</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="indicadores" id="indicadores">
+                    <button class="punto activo" data-slide="0"></button>
+                    <button class="punto" data-slide="1"></button>
+                    <button class="punto" data-slide="2"></button>
+                    <button class="punto" data-slide="3"></button>
+                </div>
+
+                <button class="carrusel-btn siguiente" id="siguiente" aria-label="Siguiente">›</button>
+            </div>
+        </section>
+
+        <section class="categorias-seccion" id="catalogo">
+            <div class="titulo">
+                <p>SC / CATEGORÍAS</p>
+                <h2>Explora tu estilo</h2>
+            </div>
+
+            <div class="categorias-sc">
+                <a href="Mujeres.html" class="categoria-sc">
+                    <div class="categoria-imagen">
+                        <img src="Imagenes/tanda1/playera1-m.jpeg" alt="Mujeres">
+                    </div>
+                    <span>Mujeres</span>
+                </a>
+
+                <a href="Hombres.html" class="categoria-sc">
+                    <div class="categoria-imagen">
+                        <img src="Imagenes/tanda1/camisa1-h.jpeg" alt="Hombres">
+                    </div>
+                    <span>Hombres</span>
+                </a>
+
+                <a href="Niños.html" class="categoria-sc">
+                    <div class="categoria-imagen">
+                        <img src="Imagenes/tanda1/playera1-nh.png" alt="Niños">
+                    </div>
+                    <span>Niños</span>
+                </a>
+
+                <a href="accesorios.html" class="categoria-sc">
+                    <div class="categoria-imagen">
+                        <img src="Imagenes/tanda1/accesorios.jpg" alt="Accesorios">
+                    </div>
+                    <span>Accesorios</span>
+                </a>
+
+                <a href="Calzado.html" class="categoria-sc">
+                    <div class="categoria-imagen">
+                        <img src="Imagenes/tenis-demo.jpg" alt="Calzado">
+                    </div>
+                    <span>Calzado</span>
+                </a>
+
+                <a href="SC.html" class="categoria-sc">
+                    <div class="categoria-imagen">
+                        <img src="Imagenes/logoSC.jpeg" alt="Streetwear Club">
+                    </div>
+                    <span>SC</span>
+                </a>
+
+                <a href="Converse.html" class="categoria-sc">
+                    <div class="categoria-imagen">
+                        <img src="Imagenes/converse.jpg" alt="Converse">
+                    </div>
+                    <span>Converse</span>
+                </a>
+
+                <a href="Vans.html" class="categoria-sc">
+                    <div class="categoria-imagen">
+                        <img src="Imagenes/vans.webp" alt="Vans">
+                    </div>
+                    <span>Vans</span>
+                </a>
+
+                <a href="puma.html" class="categoria-sc">
+                    <div class="categoria-imagen">
+                        <img src="Imagenes/puma.webp" alt="Puma">
+                    </div>
+                    <span>Puma</span>
+                </a>
+
+                <a href="Palace.html" class="categoria-sc">
+                    <div class="categoria-imagen">
+                        <img src="Imagenes/palace-logo.webp" alt="Palace">
+                    </div>
+                    <span>Palace</span>
+                </a>
+
+                <a href="ofertas.html" class="categoria-sc">
+                    <div class="categoria-imagen">
+                        <img src="Imagenes/oferta.jpg" alt="Ofertas">
+                    </div>
+                    <span>Ofertas</span>
+                </a>
+
+                <a href="mayoreo.html" class="categoria-sc">
+                    <div class="categoria-imagen">
+                        <img src="Imagenes/mayoreo.jpg" alt="Mayoreo">
+                    </div>
+                    <span>Mayoreo</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="catalogo-seccion" id="catalogo-productos">
+            <div class="titulo">
+                <p>SC / SHOP</p>
+                <h2>Productos destacados</h2>
+                <span>Encuentra las prendas que van con tu estilo.</span>
+            </div>
+
+            <div class="catalogo-buscador">
+                <input type="search" id="buscadorProductos" placeholder="Buscar productos..."
+                    aria-label="Buscar productos">
+            </div>
+
+            <div class="catalogo-filtros">
+                <div class="filtro">
+                    <label for="filtroCategoria">Categoría</label>
+                    <select id="filtroCategoria">
+                        <option value="">Todas las categorías</option>
+                    </select>
+                </div>
+
+                <div class="filtro">
+                    <label for="filtroPrecio">Precio máximo</label>
+                    <select id="filtroPrecio">
+                        <option value="">Cualquier precio</option>
+                        <option value="250">Hasta $250</option>
+                        <option value="500">Hasta $500</option>
+                        <option value="1000">Hasta $1,000</option>
+                        <option value="2000">Hasta $2,000</option>
+                    </select>
+                </div>
+
+                <div class="filtro">
+                    <label for="ordenarProductos">Ordenar por</label>
+                    <select id="ordenarProductos">
+                        <option value="original">Orden original</option>
+                        <option value="menor">Precio: menor a mayor</option>
+                        <option value="mayor">Precio: mayor a menor</option>
+                        <option value="nombre">Nombre: A-Z</option>
+                    </select>
+                </div>
+
+                <button type="button" id="limpiarFiltros">Limpiar filtros</button>
+            </div>
+
+            <section class="catalogo-ropa">
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="Imagenes/tanda1/camisa1-h.jpeg" alt="Camisa polo casual para hombre">
+                        <span class="descuento">-5%</span>
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Camisas · Hombre</p>
+                        <h3>Camisa polo casual de manga corta</h3>
+                        <span class="vendidos">#7 Más vendidos</span>
+                        <div class="precio">
+                            <strong>$130.77</strong>
+                            <span>90+ vendidos</span>
+                        </div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="imagenes/tanda1/new-tshirt2-h.jpeg" alt="Playera casual para hombre">
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Playeras · Hombre</p>
+                        <h3>Playera urbana de manga corta</h3>
+                        <span class="vendidos">#8 Más vendidos</span>
+                        <div class="precio">
+                            <strong>$208.00</strong>
+                            <span>1k+ vendidos</span>
+                        </div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="Imagenes/tanda1/short2-m.jpeg" alt="Short urbano para mujer">
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Shorts · Mujer</p>
+                        <h3>Short urbano casual de mujer</h3>
+                        <span class="vendidos">#12 Más vendidos</span>
+                        <div class="precio">
+                            <strong>$185.00</strong>
+                            <span>700+ vendidos</span>
+                        </div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="imagenes/tanda1/sudadera1-h.jpeg" alt="Sudadera urbana para hombre">
+                        <span class="descuento">-24%</span>
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Sudaderas · Hombre</p>
+                        <h3>Sudadera urbana</h3>
+                        <span class="vendidos">#8 Más vendidos</span>
+                        <div class="precio">
+                            <strong>$208.00</strong>
+                            <span>1k+ vendidos</span>
+                        </div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="imagenes/tanda1/pantalon1-h.jpeg" alt="Pantalón urbano para hombre">
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Pantalones · Hombre</p>
+                        <h3>Pantalón urbano de corte recto</h3>
+                        <span class="vendidos">#11 Más vendidos</span>
+                        <div class="precio">
+                            <strong>$320.00</strong>
+                            <span>600+ vendidos</span>
+                        </div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="imagenes/tanda1/pantalon1-m.jpeg" alt="Pantalón urbano para mujer">
+                        <span class="descuento">-20%</span>
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Pantalones · Mujer</p>
+                        <h3>Pantalón urbano casual de mujer</h3>
+                        <span class="vendidos">#14 Más vendidos</span>
+                        <div class="precio">
+                            <strong>$315.00</strong>
+                            <span>500+ vendidos</span>
+                        </div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="imagenes/tanda1/playera1-m.jpeg" alt="Playera urbana para mujer">
+                        <span class="descuento">-24%</span>
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Playeras · Mujer</p>
+                        <h3>Playera urbana de manga corta</h3>
+                        <span class="vendidos">#8 Más vendidos</span>
+                        <div class="precio">
+                            <strong>$208.00</strong>
+                            <span>1k+ vendidos</span>
+                        </div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="Imagenes/tanda1/playera1-nh.png" alt="Playera urbana para niño">
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Playeras · Niños</p>
+                        <h3>Playera urbana casual para niño</h3>
+                        <span class="vendidos">#16 Más vendidos</span>
+                        <div class="precio">
+                            <strong>$175.00</strong>
+                            <span>400+ vendidos</span>
+                        </div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="imagenes/tanda1/pantalon2-h.jpeg" alt="Pantalón urbano para hombre">
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Pantalones · Hombre</p>
+                        <h3>Pantalón cargo estilo urbano</h3>
+                        <span class="vendidos">#10 Más vendidos</span>
+                        <div class="precio">
+                            <strong>$345.00</strong>
+                            <span>800+ vendidos</span>
+                        </div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="imagenes/tanda1/playera2-m.jpeg" alt="Playera casual para mujer">
+                        <span class="descuento">-24%</span>
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Playeras · Mujer</p>
+                        <h3>Playera casual oversize para mujer</h3>
+                        <span class="vendidos">#8 Más vendidos</span>
+                        <div class="precio">
+                            <strong>$208.00</strong>
+                            <span>1k+ vendidos</span>
+                        </div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="imagenes/tanda1/short2-m.jpeg" alt="Short casual para mujer">
+                        <span class="descuento">-18%</span>
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Shorts · Mujer</p>
+                        <h3>Short casual de corte relajado</h3>
+                        <span class="vendidos">#12 Más vendidos</span>
+                        <div class="precio">
+                            <strong>$185.00</strong>
+                            <span>700+ vendidos</span>
+                        </div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="imagenes/tanda1/chamarra2-h.jpeg" alt="Chamarra urbana para hombre">
+                        <span class="descuento">-25%</span>
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Chamarras · Hombre</p>
+                        <h3>Chamarra urbana ligera</h3>
+                        <span class="vendidos">#9 Más vendidos</span>
+                        <div class="precio">
+                            <strong>$450.00</strong>
+                            <span>900+ vendidos</span>
+                        </div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="imagenes/tanda1/short1-h.jpeg" alt="Short urbano para hombre">
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Shorts · Hombre</p>
+                        <h3>Short urbano casual para hombre</h3>
+                        <span class="vendidos">#13 Más vendidos</span>
+                        <div class="precio">
+                            <strong>$220.00</strong>
+                            <span>600+ vendidos</span>
+                        </div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="Imagenes/tanda1/playera4-h.jpeg" alt="Playera urbana para hombre">
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Playeras · Hombre</p>
+                        <h3>Playera urbana estampado gráfico</h3>
+                        <span class="vendidos">#8 Más vendidos</span>
+                        <div class="precio">
+                            <strong>$208.00</strong>
+                            <span>1k+ vendidos</span>
+                        </div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="imagenes/tanda1/playera3-h.jpeg" alt="Playera streetwear para hombre">
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Playeras · Hombre</p>
+                        <h3>Playera streetwear de manga corta</h3>
+                        <span class="vendidos">#6 Más vendidos</span>
+                        <div class="precio">
+                            <strong>$225.00</strong>
+                            <span>1k+ vendidos</span>
+                        </div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="imagenes/tanda1/pantalon4-h.jpeg" alt="Pantalón streetwear para hombre">
+                        <span class="descuento">-18%</span>
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Pantalones · Hombre</p>
+                        <h3>Pantalón streetwear de corte amplio</h3>
+                        <span class="vendidos">#15 Más vendidos</span>
+                        <div class="precio">
+                            <strong>$380.00</strong>
+                            <span>500+ vendidos</span>
+                        </div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="imagenes/tanda1/sudadera1-m.jpeg" alt="Sudadera urbana para mujer">
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Sudaderas · Mujer</p>
+                        <h3>Sudadera oversize con capucha</h3>
+                        <span class="vendidos">#5 Más vendidos</span>
+                        <div class="precio">
+                            <strong>$390.00</strong>
+                            <span>900+ vendidos</span>
+                        </div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="imagenes/tanda1/short6-h.jpeg" alt="Short deportivo para hombre">
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Shorts · Hombre</p>
+                        <h3>Short deportivo de estilo urbano</h3>
+                        <span class="vendidos">#17 Más vendidos</span>
+                        <div class="precio">
+                            <strong>$235.00</strong>
+                            <span>450+ vendidos</span>
+                        </div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="Imagenes/tanda1/pantalon3-m.jpeg" alt="Pantalón casual para mujer">
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Pantalones · Mujer</p>
+                        <h3>Pantalón casual de corte amplio</h3>
+                        <span class="vendidos">#14 Más vendidos</span>
+                        <div class="precio">
+                            <strong>$330.00</strong>
+                            <span>550+ vendidos</span>
+                        </div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="Imagenes/tanda1/pantalon5-m.jpeg" alt="Pantalón urbano para mujer">
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Pantalones · Mujer</p>
+                        <h3>Pantalón urbano estilo cargo</h3>
+                        <span class="vendidos">#18 Más vendidos</span>
+                        <div class="precio">
+                            <strong>$365.00</strong>
+                            <span>400+ vendidos</span>
+                        </div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="Imagenes/tanda1/sudadera4-h.jpeg" alt="Sudadera streetwear para hombre">
+                        <span class="descuento">-22%</span>
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Sudaderas · Hombre</p>
+                        <h3>Sudadera streetwear oversize</h3>
+                        <span class="vendidos">#4 Más vendidos</span>
+                        <div class="precio">
+                            <strong>$420.00</strong>
+                            <span>1k+ vendidos</span>
+                        </div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="Imagenes/tanda1/sudadera6-h.jpeg" alt="Sudadera con capucha para hombre">
+                        <span class="descuento">-20%</span>
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Sudaderas · Hombre</p>
+                        <h3>Sudadera con capucha estilo urbano</h3>
+                        <span class="vendidos">#3 Más vendidos</span>
+                        <div class="precio">
+                            <strong>$440.00</strong>
+                            <span>1k+ vendidos</span>
+                        </div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="Imagenes/tanda1/short7-h.jpeg" alt="Short streetwear para hombre">
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Shorts · Hombre</p>
+                        <h3>Short streetwear de corte relajado</h3>
+                        <span class="vendidos">#19 Más vendidos</span>
+                        <div class="precio">
+                            <strong>$245.00</strong>
+                            <span>350+ vendidos</span>
+                        </div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="imagenes/tanda1/chamarra3-h.jpeg" alt="Chamarra streetwear para hombre">
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Chamarras · Hombre</p>
+                        <h3>Chamarra streetwear casual</h3>
+                        <span class="vendidos">#7 Más vendidos</span>
+                        <div class="precio">
+                            <strong>$480.00</strong>
+                            <span>800+ vendidos</span>
+                        </div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="Imagenes/accesorios/accesorios-gorras/accesorios-gorras-4.jpeg"
+                            alt="Gorra con visera curva">
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Gorras · Accesorios</p>
+                        <h3>Gorra con visera redonda</h3>
+                        <span class="vendidos">Nuevo modelo</span>
+                        <div class="precio"><strong>$270.00</strong><span>Disponible</span></div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="Imagenes/accesorios/accesorios-gorros/accesorios-gorros-8.jpeg" alt="Gorro de punto">
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Gorros · Accesorios</p>
+                        <h3>Gorro de punto clásico</h3>
+                        <span class="vendidos">Nuevo modelo</span>
+                        <div class="precio"><strong>$195.00</strong><span>Disponible</span></div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="Imagenes/accesorios/accesorios-cadenas/accesorios-cadenas-4.jpeg"
+                            alt="Cadena de eslabones">
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Cadenas · Accesorios</p>
+                        <h3>Cadena de eslabones</h3>
+                        <span class="vendidos">Nuevo modelo</span>
+                        <div class="precio"><strong>$220.00</strong><span>Disponible</span></div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="Imagenes/accesorios/accesorios-calcetas/accesorios-calcetas-11.jpeg"
+                            alt="Calcetas con diseño">
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Calcetas · Accesorios</p>
+                        <h3>Calcetas con diseño gráfico</h3>
+                        <span class="vendidos">Nuevo modelo</span>
+                        <div class="precio"><strong>$115.00</strong><span>Disponible</span></div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+
+                <!-- PRODUCTO 7: GORRAS -->
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="Imagenes/accesorios/accesorios-gorras/accesorios-gorras-2.jpeg"
+                            alt="Gorra streetwear bordada">
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Gorras · Accesorios</p>
+                        <h3>Gorra streetwear bordada</h3>
+                        <span class="vendidos">#7 Más vendidos</span>
+                        <div class="precio">
+                            <strong>$280.00</strong>
+                            <span>700+ vendidos</span>
+                        </div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+
+                <!-- PRODUCTO 8: ANILLOS -->
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="Imagenes/accesorios/accesorios-anillos/accesorios-anillos-2.jpeg"
+                            alt="Anillo estilo urbano">
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Anillos · Accesorios</p>
+                        <h3>Anillo estilo streetwear</h3>
+                        <span class="vendidos">#8 Más vendidos</span>
+                        <div class="precio">
+                            <strong>$170.00</strong>
+                            <span>250+ vendidos</span>
+                        </div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+
+                <!-- PRODUCTO 9: GORROS -->
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="Imagenes/accesorios/accesorios-gorros/accesorios-gorros-4.jpeg"
+                            alt="Gorro urbano con logo">
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Gorros · Accesorios</p>
+                        <h3>Gorro urbano con logo</h3>
+                        <span class="vendidos">#9 Más vendidos</span>
+                        <div class="precio">
+                            <strong>$220.00</strong>
+                            <span>400+ vendidos</span>
+                        </div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+
+                <!-- PRODUCTO 10: CADENAS -->
+                <div class="producto">
+                    <div class="imagen-producto">
+                        <img src="Imagenes/accesorios/accesorios-cadenas/accesorios-cadenas-2.jpeg"
+                            alt="Cadena con dije">
+                        <span class="descuento">-20%</span>
+                        <button class="favorito">♡</button>
+                    </div>
+                    <div class="info-producto">
+                        <p class="categoria">Cadenas · Accesorios</p>
+                        <h3>Cadena con gancho urbano</h3>
+                        <span class="vendidos">#10 Más vendidos</span>
+                        <div class="precio">
+                            <strong>$230.00</strong>
+                            <span>350+ vendidos</span>
+                        </div>
+                        <button class="carrito">🛒</button>
+                    </div>
+                </div>
+            </section>
+
+            <div class="modal-producto" id="modalProducto">
+                <div class="detalle-producto">
+                    <button type="button" class="cerrar-modal" id="cerrarModal">✕</button>
+
+                    <div class="detalle-imagen">
+                        <img id="detalleImagen" src="" alt="Producto seleccionado">
+                    </div>
+
+                    <div class="detalle-informacion">
+                        <p id="detalleCategoria" class="detalle-categoria"></p>
+                        <h2 id="detalleNombre"></h2>
+
+                        <div class="detalle-calificacion">
+                            ⭐ <span id="detalleCalificacion">4.8</span>
+                            <span> / 5.0</span>
+                        </div>
+
+                        <p id="detalleDescripcion" class="detalle-descripcion"></p>
+
+                        <div class="detalle-precio">
+                            <strong id="detallePrecio"></strong>
+                            <span id="detalleDescuento"></span>
+                        </div>
+
+                        <p><strong>Género y edad:</strong> <span id="detalleGenero"></span></p>
+                        <p><strong>Disponibilidad:</strong> <span id="detalleStock"></span></p>
+
+                        <div class="opcion-producto">
+                            <label for="detalleTalla">Selecciona tu talla:</label>
+                            <select id="detalleTalla">
+                                <option value="">Seleccionar talla</option>
+                                <option>XS</option>
+                                <option>S</option>
+                                <option>M</option>
+                                <option>L</option>
+                                <option>XL</option>
+                                <option>XXL</option>
+                            </select>
+                        </div>
+
+                        <div class="opcion-producto">
+                            <label for="detalleColor">Selecciona un color:</label>
+                            <select id="detalleColor">
+                                <option value="">Seleccionar color</option>
+                                <option>Negro</option>
+                                <option>Blanco</option>
+                                <option>Gris</option>
+                                <option>Rojo</option>
+                                <option>Azul</option>
+                            </select>
+                        </div>
+
+                        <div class="opcion-producto">
+                            <label for="detalleCantidad">Cantidad:</label>
+                            <input type="number" id="detalleCantidad" value="1" min="1" max="10">
+                        </div>
+
+                        <p class="medios-pago">
+                            <strong>Medios de pago:</strong>
+                            Tarjeta, transferencia y efectivo.
+                        </p>
+
+                        <div class="detalle-botones">
+                            <button type="button" id="agregarCarritoDetalle">🛒 Agregar al carrito</button>
+                            <button type="button" id="agregarFavoritoDetalle">♡ Agregar a favoritos</button>
+                        </div>
+
+                        <p id="mensajeDetalle" class="mensaje-detalle"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="ayuda">
+        <div class="footer-grid">
+            <div>
+                <span class="logo-icon">
+                    <img src="Imagenes/logoSC.jpeg" alt="Logo SC">
+                </span>
+                <h3>SC</h3>
+                <p>Streetwear Club</p>
+                <p>Tu estilo. Tu calle.</p>
+            </div>
+
+            <div>
+                <h3>Inicio</h3>
+                <a href="pagina-principal.html">Inicio</a>
+            </div>
+
+            <div>
+                <h3>Novedades</h3>
+                <a href="pagina-principal.html#novedades">Novedades</a>
+                <a href="pagina-principal.html#novedades">Producto destacado</a>
+                <a href="pagina-principal.html#novedades">Ofertas de la semana</a>
+                <a href="pagina-principal.html#novedades">Nueva colección</a>
+                <a href="pagina-principal.html#novedades">Streetwear para hombre</a>
+                <a href="pagina-principal.html#novedades">Streetwear para mujer</a>
+                <a href="pagina-principal.html#novedades">Compra por mayoreo</a>
+            </div>
+
+            <div>
+                <h3>Catálogo</h3>
+                <a href="pagina-principal.html">Catálogo</a>
+                <a href="Mujeres.html">Mujeres</a>
+                <a href="Hombres.html">Hombres</a>
+                <a href="Niños.html">Niños</a>
+                <a href="Calzado.html">Calzado</a>
+                <a href="accesorios.html">Accesorios</a>
+                <a href="Converse.html">Converse</a>
+                <a href="Vans.html">Vans</a>
+                <a href="puma.html">Puma</a>
+                <a href="Palace.html">Palace</a>
+                <a href="ofertas.html">Ofertas</a>
+                <a href="mayoreo.html">Mayoreo</a>
+            </div>
+
+            <div>
+                <h3>Compras</h3>
+                <a href="carrito.html">Carrito</a>
+                <a href="favoritos.html">Favoritos</a>
+            </div>
+
+            <div>
+                <h3>Nosotros</h3>
+                <h5>Entérate más sobre nosotros</h5>
+                <a href="nosotros.html">Nosotros</a>
+                <a href="nosotros.html#nosotros">Misión y visión</a>
+                <a href="nosotros.html#preguntas">Preguntas frecuentes</a>
+            </div>
+
+            <div>
+                <h3>Redes</h3>
+                <a href="redes.html">Redes sociales</a>
+                <a href="redes.html">Instagram</a>
+            </div>
+
+            <div>
+                <h3>Contacto</h3>
+                <h5>Ponte en contacto con nosotros</h5>
+                <a href="contacto.html">Contacto</a>
+                <a href="contacto.html#whatsapp">WhatsApp</a>
+                <a href="contacto.html#correo">Correo</a>
+            </div>
+
+            <div>
+                <h3>Sucursales</h3>
+                <a href="sucursales.html">Sucursales</a>
+                <a href="sucursales.html">Maps</a>
+                <a href="sucursales.html">Horarios</a>
+            </div>
+        </div>
+
+        <div class="copy">
+            © 2026 SC — Streetwear Club
+        </div>
+    </footer>
+
+    <script src="pagina-principal.js"></script>
+    <script src="carrito.js"></script>
+    <script src="favoritosjs.js" defer></script>
+</body>
+
+</html>

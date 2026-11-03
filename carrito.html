@@ -5,33 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi carrito | Streetwear Club</title>
-    <link rel="stylesheet" href="carritocc.css">
-    <script src="carritojs.js" defer></script>
-    <script src="scrip.js"></script>
+    <link rel="stylesheet" href="carrito.css">
+    <script src="carrito.js" defer></script>
+    <script src="pagina-principal.js"></script>
 </head>
 
 <body>
-
     <header class="encabezado">
         <a href="SC.html" class="logo">
             <img src="Imagenes/logoSC.jpeg" alt="Logo SC">
             <span>STREETWEAR CLUB</span>
         </a>
-
         <nav>
-            <a href="tienda.html">Inicio</a>
-            <a href="tienda.html#catalogo-productos">Catálogo</a>
-            <a href="carrito.html" class="enlace-carrito">
-                🛒 Carrito <span id="contadorCarrito">0</span>
-            </a>
+            <a href="pagina-principal.html">Inicio</a>
+            <a href="pagina-principal.html#catalogo">Catálogo</a>
+            <a href="carrito.html" class="enlace-carrito">🛒 Carrito <span id="contadorCarrito">0</span></a>
             <a href="#ayuda">Ayuda</a>
         </nav>
-
         <div class="iconos">
             <button type="button" id="modoOscuro" class="dark-button" title="Cambiar modo"
-                aria-label="Cambiar entre modo claro y oscuro">
-                ◐
-            </button>
+                aria-label="Cambiar entre modo claro y oscuro">◐</button>
         </div>
     </header>
 
@@ -43,209 +36,135 @@
         </div>
 
         <div class="contenido-carrito">
-
             <section class="productos-carrito">
                 <div class="cabecera-productos">
                     <h2>Productos seleccionados</h2>
-                    <button type="button" id="vaciarCarrito">
-                        Vaciar carrito
-                    </button>
+                    <button type="button" id="vaciarCarrito">Vaciar carrito</button>
                 </div>
-
                 <div id="listaCarrito" aria-live="polite"></div>
-
                 <div id="carritoVacio" class="carrito-vacio" hidden>
                     <div class="icono-vacio">🛍️</div>
                     <h2>Tu carrito está vacío</h2>
                     <p>¡Descubre prendas que van con tu estilo!</p>
-                    <a href="tienda.html#catalogo-productos" class="boton-principal">
-                        Explorar colección
-                    </a>
+                    <a href="pagina-principal.html#catalogo" class="boton-principal">Explorar colección</a>
                 </div>
-
-                <a href="tienda.html#catalogo-productos" class="seguir-comprando">
-                    ← Seguir comprando
-                </a>
+                <a href="pagina-principal.html#catalogo" class="seguir-comprando">← Seguir comprando</a>
             </section>
 
             <aside class="resumen">
                 <h2>Resumen de compra</h2>
-
                 <div class="linea-resumen">
                     <span>Productos</span>
                     <span id="cantidadResumen">0 artículos</span>
                 </div>
-
                 <div class="linea-resumen">
                     <span>Subtotal</span>
                     <span id="subtotal">$0.00</span>
                 </div>
-
                 <div class="linea-resumen descuento-linea">
                     <span>Descuento por cantidad</span>
                     <span id="descuento">$0.00</span>
                 </div>
-
                 <div class="linea-resumen">
                     <span>Envío</span>
                     <span id="costoEnvio">Por calcular</span>
                 </div>
-
-                <p class="aviso-envio">
-                    El costo de envío es una estimación de esta simulación.
-                </p>
-
+                <p class="aviso-envio">El costo de envío es una estimación de esta simulación.</p>
                 <div class="total">
                     <span>Total estimado</span>
                     <strong id="total">$0.00</strong>
                 </div>
-
-                <p id="mensajeDescuento" class="mensaje-descuento">
-                    Agrega más productos para obtener descuentos.
-                </p>
-
-                <button type="button" id="finalizarCompra" class="boton-principal boton-finalizar">
-                    Continuar con la compra
-                </button>
-
-                <p class="nota-seguridad">
-                    🔒 Simulación escolar. No se realizan pagos reales.
-                </p>
+                <p id="mensajeDescuento" class="mensaje-descuento">Agrega más productos para obtener descuentos.</p>
+                <button type="button" id="finalizarCompra" class="boton-principal boton-finalizar">Continuar con la
+                    compra</button>
+                <p class="nota-seguridad">🔒 Simulación escolar. No se realizan pagos reales.</p>
             </aside>
-
         </div>
     </main>
 
     <footer id="ayuda">
-
         <div class="footer-grid">
-
             <div>
                 <span class="logo-icon">
                     <img src="Imagenes/logoSC.jpeg" alt="Logo SC">
                 </span>
-
                 <h3>SC</h3>
-
-                <p>
-                    Streetwear Club
-                </p>
-
-                <p>
-                    Tu estilo. Tu calle.
-                </p>
-
+                <p>Streetwear Club</p>
+                <p>Tu estilo. Tu calle.</p>
             </div>
 
-
-
             <div>
-
                 <h3>Inicio</h3>
-
-                <a href="tienda.html">Inicio</a>
-
+                <a href="pagina-principal.html">Inicio</a>
             </div>
 
-
             <div>
-
                 <h3>Novedades</h3>
-
-                <a href="#novedades">Novedades</a>
-                <a href="#novedades">Producto destacado</a>
-                <a href="#novedades">Ofertas de la semana</a>
-                <a href="#novedades">Nueva colección</a>
-                <a href="#novedades">Streetwear para hombre</a>
-                <a href="#novedades">Streetwear para mujer</a>
-                <a href="#novedades">Compra por mayoreo</a>
-
+                <a href="pagina-principal.html#novedades">Novedades</a>
+                <a href="pagina-principal.html#novedades">Producto destacado</a>
+                <a href="pagina-principal.html#novedades">Ofertas de la semana</a>
+                <a href="pagina-principal.html#novedades">Nueva colección</a>
+                <a href="pagina-principal.html#novedades">Streetwear para hombre</a>
+                <a href="pagina-principal.html#novedades">Streetwear para mujer</a>
+                <a href="pagina-principal.html#novedades">Compra por mayoreo</a>
             </div>
 
-
             <div>
-
                 <h3>Catálogo</h3>
-
-                <a href="#catalogo">Catalogo</a>
-                <a href="#catalogo">Mujeres</a>
-                <a href="#catalogo">Hombres</a>
-                <a href="#catalogo">Niños</a>
-                <a href="#catalogo">Playeras</a>
-                <a href="#catalogo">Pantalones</a>
-                <a href="#catalogo">Accesorios</a>
-                <a href="#catalogo">Calzados</a>
-                <a href="#catalogo">SC</a>
-                <a href="#catalogo">Converse</a>
-                <a href="#catalogo">Vans</a>
-                <a href="#catalogo">Puma</a>
-                <a href="#catalogo">Palace</a>
-                <a href="#catalogo">Ofertas</a>
-                <a href="#catalogo">Mayoreo</a>
-
-
+                <a href="pagina-principal.html">Catálogo</a>
+                <a href="Mujeres.html">Mujeres</a>
+                <a href="Hombres.html">Hombres</a>
+                <a href="Niños.html">Niños</a>
+                <a href="Calzado.html">Calzado</a>
+                <a href="accesorios.html">Accesorios</a>
+                <a href="Converse.html">Converse</a>
+                <a href="Vans.html">Vans</a>
+                <a href="puma.html">Puma</a>
+                <a href="Palace.html">Palace</a>
+                <a href="ofertas.html">Ofertas</a>
+                <a href="mayoreo.html">Mayoreo</a>
             </div>
 
             <div>
-
                 <h3>Compras</h3>
-
-                <a href="#">Carritos</a>
-                <a href="#">Favoritos</a>
-                <a href="#">Métodos de pago</a>
-
+                <a href="carrito.html">Carrito</a>
+                <a href="favoritos.html">Favoritos</a>
             </div>
 
             <div>
-
                 <h3>Nosotros</h3>
-                <h5>enterate mas sobre nosotros</h5>
-
-                <a href="#">Nosostros</a>
-                <a href="#">Misión y Visión</a>
-                <a href="#">Preguntas frecuentes</a>
-
+                <h5>Entérate más sobre nosotros</h5>
+                <a href="nosotros.html">Nosotros</a>
+                <a href="nosotros.html#nosotros">Misión y visión</a>
+                <a href="nosotros.html#preguntas">Preguntas frecuentes</a>
             </div>
 
             <div>
-
                 <h3>Redes</h3>
-
-                <a href="#">Redes</a>
-                <a href="#">Instagram</a>
-                <a href="#">TikTok</a>
-
+                <a href="redes.html">Redes sociales</a>
+                <a href="redes.html">Instagram</a>
             </div>
 
             <div>
-
                 <h3>Contacto</h3>
-                <h5>ponte en contacto con nosotros y aclara tus dudas</h5>
-                <a href="#">Contacto</a>
-                <a href="#">WhatsApp</a>
+                <h5>Ponte en contacto con nosotros</h5>
+                <a href="contacto.html">Contacto</a>
+                <a href="contacto.html#whatsapp">WhatsApp</a>
+                <a href="contacto.html#correo">Correo</a>
             </div>
 
             <div>
-
                 <h3>Sucursales</h3>
-
-                <a href="#">Sucursales</a>
-                <a href="#">Maps</a>
-                <a href="#">Horarios</a>
-
+                <a href="sucursales.html">Sucursales</a>
+                <a href="sucursales.html">Maps</a>
+                <a href="sucursales.html">Horarios</a>
             </div>
-
         </div>
-
 
         <div class="copy">
-
             © 2026 SC — Streetwear Club
-
         </div>
-
     </footer>
-
 </body>
 
 </html>
